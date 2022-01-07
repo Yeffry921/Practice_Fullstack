@@ -1,1 +1,0 @@
-GET https://api.rawg.io/api/games?key=391adff7676142c2b6d7314dcfda9a19
