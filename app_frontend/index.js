@@ -1,14 +1,13 @@
-
 const renderDataGrid = (data) => {
   const markup = `
     <ul class="content__grid">
       ${data.map((game) => 
-        ` <li>
+        ` <li data-id=${game.id}>
             <img src=${game.background_image} width="250" height="250">
             <h3>${game.name}</h3>
           </li>
         `
-      )}
+      ).join('')}
     </ul>
   `
   document.querySelector('.content__wrapper').innerHTML = markup
