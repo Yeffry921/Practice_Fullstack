@@ -3,8 +3,12 @@ const renderDataGrid = (data) => {
       ${data.map((game) => 
         `
         <li>
-          <img src=${game.background_image} width="250" height="250">
-          <h3 data-id=${game.id} class="game__name">${game.name}</h3>
+          <div>
+            <img src=${game.background_image} width="250" height="250">
+          </div>
+          <div>
+            <h3 data-id=${game.id} class="game__name">${game.name}</h3>
+          </div>
         </li>
         `
       ).join('')}
@@ -14,13 +18,15 @@ const renderDataGrid = (data) => {
 
 const renderIndividualData = async (event) => {
   const data = await showIndividualGameData(event)
-  console.log(data)
+  if(!data) {
+    return;
+  }
   const markup = `
     <div class="content__game-wrapper">
       <h1>${data.name}</h1>
-      <div>${data.description}</div>
+      <img src=${data.background_image_additional} class="content__image" width="450" height="450">
+      <div class="content__description">${data.description}</div>
     </div>
-    
   `
   document.querySelector('.content__wrapper').innerHTML = markup
 }
